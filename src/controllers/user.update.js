@@ -1,4 +1,4 @@
-const User = require("../models/user.model.js");
+const User = require("../models/userTalent.model.js");
 
 const actualizarUsuario = async (req, res) => {
   const { id } = req.params;
