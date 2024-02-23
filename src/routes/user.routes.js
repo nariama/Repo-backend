@@ -10,14 +10,17 @@ const isAuth = require('../middlewares/validar-jwt.js');
 //listar usuarios
 router.get("/", listarUsuarios);
 
-//crear usuario
+//crear usuario talento
+router.post("/crear-usuario", crearUsuario);
+
+//crear usuario empresa
 router.post("/crear-usuario", crearUsuario);
 
 //login
 router.post("/login", login);
 
 //actualizar usuario
-router.put("/actualizar-usuario/:id", actualizarUsuario);
+router.put("/perfil_usuario/:id", actualizarUsuario);
 
 //borrar usuario
 router.delete("/eliminar-usuario", (req, res) => {
@@ -26,6 +29,11 @@ router.delete("/eliminar-usuario", (req, res) => {
 
 router.get("/ruta-protegida", isAuth, (req,res) => {  // primero se ejecuta isAuth y despues req, res
     res.send("Ruta protegida");
+});
+
+//verificar server
+router.get("/verificar", (req, res) => {
+    res.send("Ruta gestionada");
 });
 
 module.exports = router;
