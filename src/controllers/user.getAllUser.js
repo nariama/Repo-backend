@@ -1,8 +1,9 @@
-const User = require("../models/user.model.js");
+const UserCompany = require("../models/userCompany.model.js");
+const UserTalent = require("../models/userTalent.model.js");
 
 const listarUsuarios = async (req, res) => {
 
-   const usuarios = await User.find({});
+   const usuarios = await UserTalent.find({}) + await UserCompany.find({}); //????????????
 
    res.status(200).json({
          code: 200,

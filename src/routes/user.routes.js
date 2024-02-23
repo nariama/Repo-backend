@@ -2,22 +2,32 @@ const express = require('express');
 const router = express.Router();
 
 const  listarUsuarios  = require("../controllers/user.getAllUser.js");
-const actualizarUsuario = require('../controllers/user.Update.js');
-const crearUsuario = require("../controllers/user.createUser.js");
+// const actualizarUsuario = require('../controllers/user.Update.js');
+const crearUsuarioTalento = require("../controllers/user.createUserTalent.js");
+const crearUsuarioEmpresa = require('../controllers/user.createUserCompany.js');
+
 const login = require('../controllers/login.user.js');
 const isAuth = require('../middlewares/validar-jwt.js');
+
 
 //listar usuarios
 router.get("/", listarUsuarios);
 
-//crear usuario
-router.post("/crear-usuario", crearUsuario);
+//crear usuarios
+router.post("/crear_usuario_empresa", crearUsuarioEmpresa);
+
+router.post("/crear_usuario_talento", crearUsuarioTalento);
 
 //login
 router.post("/login", login);
 
 //actualizar usuario
-router.put("/actualizar-usuario/:id", actualizarUsuario);
+// router.put("/actualizar-usuario/:id", actualizarUsuario);
+
+//verificar server
+router.get("/verificar", (req, res) => {
+    res.send("Ruta gestionada");
+});
 
 //borrar usuario
 router.delete("/eliminar-usuario", (req, res) => {
