@@ -14,6 +14,12 @@ const userTalentSchema = new Schema({
     bday: String,
     phone_num: String,
     adm_msg: String,
+
+    // Schema perfil
+    //exp
+    //
+
+    //
 })
 
 // modelo
