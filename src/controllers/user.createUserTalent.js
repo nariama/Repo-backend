@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 const crearUsuarioTalento = async (req, res) => {
 
-  const { kind, name, lastName, email, password, rut, estado_civil, bday, phone_num, adm_msg} = req.body;
+  const { kind, name, email, password, rut, estado_civil, bday, phone_num, adm_msg, Foto, Nota, Descripcion, Disponibilidad, Horarios, Habilidades, Renta_minima, Estado, StrongsHab} = req.body;
 
   // agrgar un paso para encriptar la constraseña
   const salt = bcrypt.genSaltSync();
@@ -13,7 +13,6 @@ const crearUsuarioTalento = async (req, res) => {
   await UserTalent.create({
     kind: kind,
     name: name,
-    lastName: lastName,
     email: email,
     password: passwordEncripted,
     rut: rut,
@@ -21,6 +20,15 @@ const crearUsuarioTalento = async (req, res) => {
     bday: bday,
     phone_num: phone_num,
     adm_msg: adm_msg,
+    Foto: Foto, // Desde aqui hacia abajo se genera la tarjeta
+    Nota: Nota,
+    Descripcion: Descripcion,
+    Disponibilidad: Disponibilidad,
+    Horarios: Horarios,
+    Habilidades: Habilidades,
+    Renta_minima: Renta_minima,
+    Estado: Estado,
+    StrongsHab: StrongsHab,
   });
 
   res.status(201).json({
