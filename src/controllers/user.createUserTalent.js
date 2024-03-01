@@ -20,6 +20,7 @@ const crearUsuarioTalento = async (req, res) => {
     bday: bday,
     phone_num: phone_num,
     adm_msg: adm_msg,
+    
     Foto: Foto, // Desde aqui hacia abajo se genera la tarjeta
     Nota: Nota,
     Descripcion: Descripcion,
