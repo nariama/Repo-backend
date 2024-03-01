@@ -1,8 +1,8 @@
 async function verificarCorreoExistente(req, res, next) {
-    const correo = req.body.correo;
+    const email = req.body.email;
 
     try {
-        const usuario = await Usuario.findOne({ email: email });
+        const usuario = await userTalent.findOne({ email: email });
         if (usuario) {
             return res.status(400).json({ mensaje: "El correo electrónico ya está registrado" });
         }
@@ -13,3 +13,5 @@ async function verificarCorreoExistente(req, res, next) {
     // Si el correo no existe en la base de datos, pasar al siguiente middleware
     next();
 }
+
+module.exports = verificarCorreoExistente;
