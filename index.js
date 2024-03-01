@@ -1,8 +1,33 @@
 require('dotenv').config();
 const app = require("./src/app/app.js")
 const { dbConnection } = require("./src/database/conexion.js")
-
+const express = require('express')
+const multer = requiere('multer')
 const port = process.env.DEV_PORT;
+
+
+const app = express()
+app.use(express.json)
+
+const storage = multer.diskStorage({
+  destination: function(req, file, cb){
+    return cb(null, "./src/cv")
+    },
+    filename: function (req, file, cb){
+      return cb(null,`${Date.now()}_${file.originalname}` )
+    }
+})
+
+const upload = multer({storage})
+
+app.post('/upload', upload.single('file'), (req, res) => {
+  console.log(req.body)
+  console.log(req.file)
+
+
+})
+
+
 
 
 app.listen(port, () => {
