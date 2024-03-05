@@ -8,6 +8,7 @@ const crearUsuarioEmpresa = require('../controllers/user.createUserCompany.js');
 
 const login = require('../controllers/login.user.js');
 const isAuth = require('../middlewares/validar-jwt.js');
+const verificarCorreoExistente = require('../middlewares/validar-email.js')
 
 
 //listar usuarios
