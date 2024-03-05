@@ -4,25 +4,26 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose; 
 
 const userTalentSchema = new Schema({
-    kind: String,
-    name: String,
-    email: String,
-    password: String,
-    rut: String,
-    estado_civil: String,
-    bday: String,
-    phone_num: String,
-    adm_msg: String,
+    kind: { type: String, required: true },
+    name: { type: String, required: true },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    rut: { type: String, required: true },
+    estado_civil: { type: String, required: true },
+    bday: { type: String, required: true },
+    phone_num: { type: String, required: true },
+    adm_msg: { type: String, required: true },
 
-    Foto: String,
-    Nota: Number,
-    Descripcion: String,
-    Disponibilidad: String,
-    Horarios: String,
-    Habilidades: String,
-    Renta_minima: Number,
-    Estado: String,
-    StrongsHab: String,
+    Foto: { type: String, required: true },
+    Nota: { type: Number, required: true },
+    Descripcion: { type: String, required: true },
+    Disponibilidad: { type: String, required: true },
+    Horarios: { type: String, required: true },
+    Habilidades: { type: String, required: true },
+    Renta_minima: { type: Number, required: true },
+    Estado: { type: String, required: true },
+    StrongsHab: { type: String, required: true },
+    experienciasLaborales: [{ type: Schema.Types.ObjectId, ref: 'ExperienciaLaboral' }]
 
 
     // Schema perfil

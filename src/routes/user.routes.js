@@ -9,6 +9,8 @@ const crearUsuarioEmpresa = require('../controllers/user.createUserCompany.js');
 const login = require('../controllers/login.user.js');
 const isAuth = require('../middlewares/validar-jwt.js');
 const verificarCorreoExistente = require('../middlewares/validar-email.js')
+const { agregarExperienciaLaboral } = require("../controllers/user.createUserExperience.js");
+
 
 
 //listar usuarios
@@ -38,5 +40,8 @@ router.delete("/eliminar-usuario", (req, res) => {
 router.get("/ruta-protegida", isAuth, (req,res) => {  // primero se ejecuta isAuth y despues req, res
     res.send("Ruta protegida");
 });
+
+// Ruta para agregar una nueva experiencia laboral
+router.post("/experienciasLaborales", agregarExperienciaLaboral);
 
 module.exports = router;
