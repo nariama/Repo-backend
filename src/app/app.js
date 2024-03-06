@@ -3,8 +3,9 @@ const morgan = require('morgan');
 const router = require("../routes/user.routes.js");
 const cors = require('cors');
 
-
 const app = express();
+
+
 
 app.use(morgan('dev'));
 app.use(express.json());
@@ -29,6 +30,9 @@ app.options('*', cors({
 
 
 app.use("/", router);
+
+// Ruta para servir archivos estáticos desde la carpeta 'uploads'
+app.use('/uploads', express.static('uploads'));
 
 app.use("*", (req, res) => { res.status(404).send("Ruta no encontrada")});
 
