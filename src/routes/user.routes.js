@@ -72,6 +72,6 @@ router.post('/subir_archivo', upload.single('file'), (req, res) => {
   });
 
 // Ruta para verificar el estado de login
-router.post('/verify-login', verifyLogin);
+router.post('/verify-login', isAuth, verifyLogin);
 
 module.exports = router;

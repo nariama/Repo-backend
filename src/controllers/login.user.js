@@ -7,7 +7,7 @@ const jwt = require('jsonwebtoken');
 
 const login = async (req, res) => {
 
-    const { email, password } = req.body;
+    const { email, password, kind } = req.body;
 
     if(!email || !password) {
         return res.status(400).json({
@@ -53,7 +53,8 @@ const login = async (req, res) => {
        msg: "Usuario logueado con éxito",
        data: {
         name: user.name,
-        id: user._id
+        id: user._id,
+        kind: user.kind,
        },
        token: token
    })
