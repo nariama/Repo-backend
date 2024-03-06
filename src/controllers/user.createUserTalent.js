@@ -1,6 +1,5 @@
 const UserTalent = require("../models/userTalent.model.js");
 const bcrypt = require('bcrypt');
-// const verificarCorreoExistente = require('../middlewares/validar-email.js')
 
 const crearUsuarioTalento = async (req, res) => {
 
@@ -20,12 +19,6 @@ const crearUsuarioTalento = async (req, res) => {
         msg: "Usuario ya existe"
     })
    }
-
-  // // Verificar si el correo electrónico ya está registrado
-  // const usuarioExistente = await verificarCorreoExistente(email);
-  // if (usuarioExistente) {
-  //   return res.status(400).json({ mensaje: "El correo electrónico ya está registrado" });
-  // }
 
   await UserTalent.create({
     kind: kind,
