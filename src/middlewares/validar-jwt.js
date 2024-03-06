@@ -2,7 +2,8 @@ const jwt = require('jsonwebtoken');
 
 const isAuth = (req, res, next) => {
 
-    const access_token = req.headers.token;
+    // const access_token = req.headers.token;
+    const access_token = req.headers.token;;
 
     if (!access_token) {
         return res.status(401).json({
@@ -12,7 +13,7 @@ const isAuth = (req, res, next) => {
     }
     try {
         const decoded = jwt.verify(access_token, process.env.SECRET_KEY_STRING); // semilla con la que lo validamos debe ser la misma con la que lo creamos
-        req.user = decoded.user;
+        req.user = decoded;
     } catch (error) {
         console.log(error);
         return res.status(401).json({

@@ -9,7 +9,7 @@ const generarJWT = (idUser = "") => {    // idUser = "" quiere decir que si no r
             payload,
             process.env.SECRET_KEY_STRING, // semilla
             {
-                expiresIn: "4h"
+                expiresIn: "1h"
             },
             (err, token) => {
                 if (err) {
