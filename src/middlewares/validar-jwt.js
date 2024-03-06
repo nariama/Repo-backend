@@ -1,5 +1,7 @@
 const jwt = require('jsonwebtoken');
+
 const isAuth = (req, res, next) => {
+
     const access_token = req.headers.token;
 
     if (!access_token) {
@@ -10,7 +12,7 @@ const isAuth = (req, res, next) => {
     }
     try {
         const decoded = jwt.verify(access_token, process.env.SECRET_KEY_STRING); // semilla con la que lo validamos debe ser la misma con la que lo creamos
-        req.user = decoded;
+        req.user = decoded.user;
     } catch (error) {
         console.log(error);
         return res.status(401).json({
@@ -25,3 +27,34 @@ const isAuth = (req, res, next) => {
 }
 
 module.exports = isAuth;
+
+// const jwt = require('jsonwebtoken');
+
+// const isAuth = (req, res, next) => {
+//     const authorizationHeader = req.headers['authorization'];
+
+//     if (!authorizationHeader || !authorizationHeader.startsWith('Bearer ')) {
+//         return res.status(401).json({
+//             code: 401,
+//             msg: "No se ha enviado el token de acceso o el formato es incorrecto"
+//         });
+//     }
+
+//     const token = authorizationHeader.split(' ')[1];
+
+//     try {
+//         const decoded = jwt.verify(token, process.env.SECRET_KEY_STRING);
+//         req.user = decoded.user;
+//         next();
+//     } catch (error) {
+//         console.log(error);
+//         return res.status(401).json({
+//             code: 401,
+//             msg: "Token inválido"
+//         });
+//     }
+
+//     next();
+// };
+
+// module.exports = isAuth;

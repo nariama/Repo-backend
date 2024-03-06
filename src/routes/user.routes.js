@@ -42,6 +42,6 @@ router.get("/ruta-protegida", isAuth, (req,res) => {  // primero se ejecuta isAu
 });
 
 // Ruta para agregar una nueva experiencia laboral
-router.post("/experienciasLaborales", agregarExperienciaLaboral);
+router.post("/experienciasLaborales", isAuth, agregarExperienciaLaboral);
 
 module.exports = router;
