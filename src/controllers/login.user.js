@@ -1,6 +1,8 @@
 const User = require("../models/userTalent.model.js");
 const bcrypt = require('bcrypt');
 const generarJWT = require("../services/generar-jwt.js");
+const jwt = require('jsonwebtoken');
+
 
 
 const login = async (req, res) => {
@@ -38,6 +40,13 @@ const login = async (req, res) => {
    }
 
    const token = await generarJWT(user._id);
+
+   // Decodificar el token para obtener el ID del usuario
+   const decodedToken = jwt.verify(token, process.env.SECRET_KEY_STRING);
+   const userId = decodedToken.idUser;
+
+   // Imprimir el ID del usuario en la consola
+   console.log("ID del usuario:", userId);
 
    res.status(200).json({
        code: 200,

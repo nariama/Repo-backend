@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 const isAuth = (req, res, next) => {
 
     // const access_token = req.headers.token;
-    const access_token = req.headers.token;;
+    const access_token = req.headers.token;
 
     if (!access_token) {
         return res.status(401).json({

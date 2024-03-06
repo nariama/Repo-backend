@@ -4,25 +4,25 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose; 
 
 const userTalentSchema = new Schema({
-    kind: { type: String, required: true },
-    name: { type: String, required: true },
-    email: { type: String, required: true, unique: true },
-    password: { type: String, required: true },
-    rut: { type: String, required: true },
-    estado_civil: { type: String, required: true },
-    bday: { type: String, required: true },
-    phone_num: { type: String, required: true },
-    adm_msg: { type: String, required: true },
+    kind: { type: String, required: false },
+    name: { type: String, required: false },
+    email: { type: String, required: false, unique: false },
+    password: { type: String, required: false },
+    rut: { type: String, required: false },
+    estado_civil: { type: String, required: false },
+    bday: { type: String, required: false },
+    phone_num: { type: String, required: false },
+    adm_msg: { type: String, required: false },
 
-    Foto: { type: String, required: true },
-    Nota: { type: Number, required: true },
-    Descripcion: { type: String, required: true },
-    Disponibilidad: { type: String, required: true },
-    Horarios: { type: String, required: true },
-    Habilidades: { type: String, required: true },
-    Renta_minima: { type: Number, required: true },
-    Estado: { type: String, required: true },
-    StrongsHab: { type: String, required: true },
+    Foto: { type: String, required: false },
+    Nota: { type: Number, required: false },
+    Descripcion: { type: String, required: false },
+    Disponibilidad: { type: String, required: false },
+    Horarios: { type: String, required: false },
+    Habilidades: { type: String, required: false },
+    Renta_minima: { type: Number, required: false },
+    Estado: { type: String, required: false },
+    StrongsHab: { type: String, required: false },
     experienciasLaborales: [{ type: Schema.Types.ObjectId, ref: 'ExperienciaLaboral' }]
 
 

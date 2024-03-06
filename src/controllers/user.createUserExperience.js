@@ -1,9 +1,17 @@
 const UserTalent = require("../models/userTalent.model.js");
 const ExperienciaLaboral = require("../models/userExperience.model.js");
+const jwt = require('jsonwebtoken');
+
+
 
 const agregarExperienciaLaboral = async (req, res) => {
     const { actividad, lugar, fecha, descripcion } = req.body;
-    const userId = req.user.id; // asumiendo que tienes el ID del usuario en req.user.id
+    // const userId = req.idUser; // asumiendo que tienes el ID del usuario en req.user.id
+
+    const token = req.headers.token;
+
+    const decodedToken = jwt.verify(token, process.env.SECRET_KEY_STRING);
+   const userId = decodedToken.idUser;
 
     try {
         const nuevaExperiencia = new ExperienciaLaboral({
