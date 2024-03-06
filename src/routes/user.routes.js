@@ -10,6 +10,7 @@ const login = require('../controllers/login.user.js');
 const isAuth = require('../middlewares/validar-jwt.js');
 const { agregarExperienciaLaboral } = require("../controllers/user.createUserExperience.js");
 const { verifyLogin } = require('../controllers/verify-login.js');
+const profileTalent = require("../controllers/user.profileTalent.js")
 
 const multer = require('multer');
 
@@ -73,5 +74,8 @@ router.post('/subir_archivo', upload.single('file'), (req, res) => {
 
 // Ruta para verificar el estado de login
 router.post('/verify-login', isAuth, verifyLogin);
+
+// Ruta para obtener el perfil de usuario
+router.get('/perfil_talento_usuario', isAuth, profileTalent); 
 
 module.exports = router;

@@ -5,14 +5,14 @@ const jwt = require('jsonwebtoken');
 // Función para verificar el estado de login
 const verifyLogin = (req, res) => {
   // Verifica si se envió un token en el encabezado Authorization
-  const token = req.headers.authorization;
+  const token = req.headers.token;
 
   if (!token) {
     return res.status(401).json({ message: 'No se proporcionó un token de autenticación' });
   }
 
   // Verifica el token
-  jwt.verify(token.split(' ')[1], 'tu_secreto_secreto', (err, decoded) => {
+  jwt.verify(token, process.env.SECRET_KEY_STRING, (err, decoded) => {
     if (err) {
       return res.status(401).json({ message: 'Token inválido' });
     }
