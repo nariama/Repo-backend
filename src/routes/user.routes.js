@@ -12,6 +12,9 @@ const { agregarExperienciaLaboral } = require("../controllers/user.createUserExp
 const { verifyLogin } = require('../controllers/verify-login.js');
 const profileTalent = require("../controllers/user.profileTalent.js")
 const updateProfileTalent = require("../controllers/user.updateProfileTalent.js")
+const { getUserById } = require('../controllers/user.getUserById.js');
+const isAdmin = require('../middlewares/validar-admin.js');
+const updateSolicitud = require('../controllers/user.updateSolicitud.js');
 const multer = require('multer');
 
 
@@ -78,6 +81,11 @@ router.post('/verify-login', isAuth, verifyLogin);
 // Ruta para obtener el perfil de usuario
 router.get('/perfil_talento_usuario', isAuth, profileTalent); 
 
-router.put('/perfil_talento_usuario', isAuth, updateProfileTalent),
+router.put('/perfil_talento_usuario', isAuth, updateProfileTalent);
+
+router.get('/perfil_talento_usuario/:id', getUserById);
+
+router.put('/users/:userId/update-solicitud', isAuth, isAdmin, updateSolicitud);
+
 
 module.exports = router;

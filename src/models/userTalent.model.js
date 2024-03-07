@@ -33,7 +33,9 @@ const userTalentSchema = new Schema({
     visible_estado_civil: { type: String, required: false },
     visible_Horarios: { type: String, required: false },
     visible_Disponibilidad: { type: String, required: false },
-    visible_Modalidad: { type: String, required: false }
+    visible_Modalidad: { type: String, required: false },
+
+    Solicitud: { type: String, required: false }
 
 
     // Schema perfil
