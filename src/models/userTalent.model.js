@@ -25,7 +25,15 @@ const userTalentSchema = new Schema({
     Renta_minima: { type: Number, required: false },
     Estado: { type: String, required: false },
     StrongsHab: { type: String, required: false },
-    experienciasLaborales: [{ type: Schema.Types.ObjectId, ref: 'ExperienciaLaboral' }]
+    Modadlidad: { type: String, required: false },
+    Experiencia: { type: String, required: false },
+    experienciasLaborales: [{ type: Schema.Types.ObjectId, ref: 'ExperienciaLaboral' }],
+    
+    visible_bday: { type: String, required: false },
+    visible_estado_civil: { type: String, required: false },
+    visible_Horarios: { type: String, required: false },
+    visible_Disponibilidad: { type: String, required: false },
+    visible_Modalidad: { type: String, required: false }
 
 
     // Schema perfil

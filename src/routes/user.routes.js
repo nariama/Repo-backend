@@ -11,7 +11,7 @@ const isAuth = require('../middlewares/validar-jwt.js');
 const { agregarExperienciaLaboral } = require("../controllers/user.createUserExperience.js");
 const { verifyLogin } = require('../controllers/verify-login.js');
 const profileTalent = require("../controllers/user.profileTalent.js")
-
+const updateProfileTalent = require("../controllers/user.updateProfileTalent.js")
 const multer = require('multer');
 
 
@@ -77,5 +77,7 @@ router.post('/verify-login', isAuth, verifyLogin);
 
 // Ruta para obtener el perfil de usuario
 router.get('/perfil_talento_usuario', isAuth, profileTalent); 
+
+router.put('/perfil_talento_usuario', isAuth, updateProfileTalent),
 
 module.exports = router;

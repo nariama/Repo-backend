@@ -2,6 +2,7 @@ const express = require('express');
 const morgan = require('morgan');
 const router = require("../routes/user.routes.js");
 const cors = require('cors');
+const bodyParser = require('body-parser');
 
 const app = express();
 
@@ -35,5 +36,7 @@ app.use("/", router);
 app.use('/uploads', express.static('uploads'));
 
 app.use("*", (req, res) => { res.status(404).send("Ruta no encontrada")});
+
+app.use(bodyParser.json());
 
 module.exports = app;

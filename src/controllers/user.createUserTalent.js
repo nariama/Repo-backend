@@ -3,7 +3,7 @@ const bcrypt = require('bcrypt');
 
 const crearUsuarioTalento = async (req, res) => {
 
-  const { kind, name, email, password, rut, estado_civil, bday, phone_num, adm_msg, Foto, Nota, Descripcion, Disponibilidad, Horarios, Habilidades, Renta_minima, Estado, StrongsHab, Acerca_de, Idiomas } = req.body;
+  const { kind, name, email, password, rut, estado_civil, bday, phone_num, adm_msg, Foto, Nota, Descripcion, Disponibilidad, Horarios, Habilidades, Renta_minima, Estado, StrongsHab, Acerca_de, Idiomas, Modalidad, visible_bday, visible_estado_civil, visible_Horarios, visible_Disponibilidad, visible_Renta_minima, visible_Modalidad, Experiencia } = req.body;
 
   // agrgar un paso para encriptar la constraseña
   const salt = bcrypt.genSaltSync();
@@ -42,6 +42,15 @@ const crearUsuarioTalento = async (req, res) => {
     Renta_minima: Renta_minima,
     Estado: Estado,
     StrongsHab: StrongsHab,
+    Modalidad: Modalidad,
+    Experiencia: Experiencia,
+    visible_bday: visible_bday,
+    visible_estado_civil: visible_estado_civil,
+    visible_Horarios: visible_Horarios,
+    visible_Disponibilidad: visible_Disponibilidad,
+    visible_Modalidad: visible_Modalidad,
+    visible_Renta_minima: visible_Renta_minima
+
   });
 
   res.status(201).json({
