@@ -19,6 +19,8 @@ const multer = require('multer');
 
 const profileCompany = require("../controllers/user.profileCompany.js")
 const updateProfileCompany = require("../controllers/user.updateProfileCompany.js")
+const uploadImageTalent = require('../controllers/user.uploadImageTalent.js');
+const profileImageTalent = require('./user.profileImageTalent.js');
 
 
 // Configuración de multer para guardar los archivos en la carpeta 'uploads'
@@ -93,6 +95,10 @@ router.put('/perfil_empresa_usuario', isAuth, updateProfileCompany);
 router.get('/perfil_talento_usuario/:id', getUserById);
 
 router.put('/users/:userId/update-solicitud', isAuth, isAdmin, updateSolicitud);
+
+router.put('/uploadProfileImage', uploadImageTalent);
+
+router.get('/profileImageTalent', profileImageTalent);
 
 
 module.exports = router;

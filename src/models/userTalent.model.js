@@ -14,7 +14,7 @@ const userTalentSchema = new Schema({
     phone_num: { type: String, required: false },
     adm_msg: { type: String, required: false },
 
-    Foto: { type: String, required: false },
+    Foto: { type: Buffer, required: false },
     Nota: { type: Number, required: false },
     Descripcion: { type: String, required: false },
     Acerca_de: { type: String, required: false },
@@ -35,7 +35,8 @@ const userTalentSchema = new Schema({
     visible_Disponibilidad: { type: String, required: false },
     visible_Modalidad: { type: String, required: false },
 
-    Solicitud: { type: String, required: false }
+    Solicitud: { type: String, required: false },
+    Rubro: { type: String, required: false }
 
 
     // Schema perfil
