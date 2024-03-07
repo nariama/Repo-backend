@@ -17,6 +17,9 @@ const isAdmin = require('../middlewares/validar-admin.js');
 const updateSolicitud = require('../controllers/user.updateSolicitud.js');
 const multer = require('multer');
 
+const profileCompany = require("../controllers/user.profileCompany.js")
+const updateProfileCompany = require("../controllers/user.updateProfileCompany.js")
+
 
 // Configuración de multer para guardar los archivos en la carpeta 'uploads'
 const storage = multer.diskStorage({
@@ -82,6 +85,10 @@ router.post('/verify-login', isAuth, verifyLogin);
 router.get('/perfil_talento_usuario', isAuth, profileTalent); 
 
 router.put('/perfil_talento_usuario', isAuth, updateProfileTalent);
+
+router.get('/perfil_empresa_usuario', isAuth, profileCompany); 
+
+router.put('/perfil_empresa_usuario', isAuth, updateProfileCompany);
 
 router.get('/perfil_talento_usuario/:id', getUserById);
 

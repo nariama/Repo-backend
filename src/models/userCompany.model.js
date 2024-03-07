@@ -15,6 +15,11 @@ const userCompanySchema = new Schema({
     url_company: String,
     necesidad_personal: String,
     adm_msg: String,
+    HabilidadesNecesarias: String,
+    RequisitosMinimos: String,
+    FechaCreacion: String,
+    Acerca_de: String,
+    Solicitud: String
 })
 
 // modelo

@@ -1,4 +1,5 @@
-const User = require('../models/userTalent.model'); // Importa tu modelo de usuario
+const UserTalent = require('../models/userTalent.model'); // Importa tu modelo de usuario
+const UserCompany = require('../models/userCompany.model'); // Importa tu modelo de usuario
 
 
 const updateSolicitud =  async (req, res) => {
@@ -8,12 +9,18 @@ const updateSolicitud =  async (req, res) => {
         console.log(solicitud)
 
         // Buscar el usuario por su ID
-        const user = await User.findById(userId);
+        const user = await UserTalent.findById(userId);
 
         // Verificar si el usuario existe
         if (!user) {
+
+            const user = await UserCompany.findById(userId);
+        } else {
             return res.status(404).json({ message: 'User not found' });
+
         }
+
+
 
         // Actualizar el campo de solicitud
         user.Solicitud = solicitud;
